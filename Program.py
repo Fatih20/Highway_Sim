@@ -14,8 +14,8 @@ gerbang_tol_list = [
     ["Surabaya", 200]
 ]
 
-#Tetapkan gerbang mana yang berada di ujung jalan tol sehingga perjalanan tidak bisa diteruskan lagi
-posisi_penghenti = [0, len(gerbang_tol_list)-1]
+#Tetapkan posisi mana saja yang mungkin dimiliki oleh pengguna
+posisi_yang_mungkin = [i for i in range(0, len(gerbang_tol_list))]
 
 #Menanyakan apa kendaraan yang dikendarai pengguna
 print("Apa kendaraan yang anda kendarai?")
@@ -35,6 +35,7 @@ for gerbang_tol in gerbang_tol_list:
     i+=1
 print("")
 posisi = int(input(""))-1
+print(f"Anda telah memasuki gerbang tol {gerbang_tol_list[posisi]}")
 print("")
 
 #Menetapkan apakah pengguna akan melakukan perjalanan ke barat atau timur
