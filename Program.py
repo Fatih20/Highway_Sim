@@ -1,5 +1,16 @@
-kendaraan_dan_tarif_list = [["Mobil", 1.0], ["Bis", 1.5], ["Truk", 2.0]]
-gerbang_tol_list = [["Jakarta", 200], ["Tegal", 50], ["Semarang", 100], ["Jogjakarta", 100], ["Surabaya", 200]]
+kendaraan_dan_tarif_list = [
+    ["Mobil", 1.0],
+    ["Bis", 1.5],
+    ["Truk", 2.0]
+]
+
+gerbang_tol_list = [
+    ["Jakarta", 200],
+    ["Tegal", 50],
+    ["Semarang", 100],
+    ["Jogjakarta", 100],
+    ["Surabaya", 200]
+]
 
 print("Apa kendaraan yang anda kendarai?")
 i = 0
