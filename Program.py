@@ -74,13 +74,18 @@ while posisi in posisi_yang_mungkin:
         keputusan = input().lower()
         print("")
 
-    tambahan_tarif = gerbang_tol_list[posisi][1]*kendaraan_dan_tarif_list[kendaraan_pengguna][1]
+    if gerbang_yang_dilewati != 1:
+        tambahan_tarif = gerbang_tol_list[posisi][1]*kendaraan_dan_tarif_list[kendaraan_pengguna][1]
+    else : 
+        tambahan_tarif = 0
     tarif_total += tambahan_tarif
 
     if keputusan == "keluar":
         break
     elif keputusan == "lanjut":
+        if tambahan_tarif != 0:
+            print(f"Saldo sebesar {tambahan_tarif} telah dipotong dari kartu tol anda.")
         posisi += pengubah_posisi
     gerbang_yang_dilewati += 1
  
-print(f"Anda telah keluar dari tol dan sekarang telah sampai di kota {gerbang_tol_list[posisi][0]}. Terimakasih telah menggunakan tol Jasamarga. Saldo sebesar {tarif_total} telah dipotong dari kartu tol anda.")
+print(f"Anda telah keluar dari tol dan sekarang telah sampai di kota {gerbang_tol_list[posisi][0]}. Terimakasih telah menggunakan tol Jasamarga. Anda telah menghabiskan total saldo sebesar {tarif_total}.")
