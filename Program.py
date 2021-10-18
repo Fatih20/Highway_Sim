@@ -1,7 +1,16 @@
+kendaraan_dan_tarif_list = [["Mobil", 1.0], ["Bis", 1.5], ["Truk", 2.0]]
 gerbang_tol_list = [["Jakarta", 200], ["Tegal", 50], ["Semarang", 100], ["Jogjakarta", 100], ["Surabaya", 200]]
- 
-print("Mau masuk gerbang tol mana?")
- 
+
+print("Apa kendaraan yang anda kendarai?")
+i = 0
+for kendaraan_dan_tarif in kendaraan_dan_tarif_list:
+    print(f"{i+1} {kendaraan_dan_tarif[0]}")
+    i+=1
+print("")
+kendaraan_pengguna = int(input(""))-1
+print("")
+
+print("Anda memasuki tol dari gerbang mana?")
 i = 0
 for gerbang_tol in gerbang_tol_list:
     print(f"{i+1} {gerbang_tol[0]}")
