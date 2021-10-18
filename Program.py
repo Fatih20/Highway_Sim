@@ -14,9 +14,6 @@ gerbang_tol_list = [
     ["Surabaya", 200]
 ]
 
-#Tetapkan gerbang mana yang berada di ujung jalan tol sehingga perjalanan tidak bisa diteruskan lagi
-posisi_penghenti = [0, len(gerbang_tol_list)-1]
-
 #Menanyakan apa kendaraan yang dikendarai pengguna
 print("Apa kendaraan yang anda kendarai?")
 i = 0
@@ -43,7 +40,7 @@ if posisi == len(gerbang_tol_list)-1:
 elif posisi == 0:
     go_left = False
 else :
-    arah = input("Mau ke arah Timur atau Barat? ").lower()
+    arah = input("Mau pergi ke arah Timur atau Barat? ").lower()
     print("")
     if arah == "timur":
         go_left = False
@@ -55,25 +52,30 @@ if go_left:
 else :
     pengubah_posisi = 1
 
-#Pergerakan pertama pengguna di jalan tol sesuai dengan arah yang ditetapkan
-posisi += pengubah_posisi
- 
+posisi_list = [posisi]
+
 tarif = 0
 ujung_tol = True
 
 #Perjalanan selanjutnya akan mengikuti input pengguna
-while posisi not in posisi_penghenti:
-    print(f"Anda sekarang berada di gerbang tol {gerbang_tol_list[posisi][0]}. Apakah anda akan melanjutkan perjalanan atau keluar di sini? keluar/lanjut")
-    keputusan = input().lower()
-    print("")
-    tarif += gerbang_tol_list[posisi][1]*kendaraan_dan_tarif_list[kendaraan_pengguna][1]
-    if keputusan == "keluar":
-        ujung_tol = False
-        break
-    elif keputusan == "lanjut":
-        posisi += pengubah_posisi
+while 0 <= posisi <= (len(gerbang_tol_list)-1):
+    posisi += pengubah_posisi
+    posisi_list.append(posisi)
+    if len(posisi_list) == 1:
+        print(f"Anda telah memasuki gerbang tol {gerbang_tol_list[posisi]}")
+    else :
+        if posisi == 0 or posisi == (len(gerbang_tol_list)-1):
+            keputusan = "maksimum"
+        else:
+            print(f"Anda sekarang berada di gerbang tol {gerbang_tol_list[posisi][0]}. Apakah anda akan melanjutkan perjalanan atau keluar di sini? keluar/lanjut")
+            keputusan = input().lower()
+            print("")
+        if keputusan == "keluar":
+            ujung_tol = False
+            break
+        elif keputusan == "maksimum":
+            break
  
-if ujung_tol:
-    tarif += gerbang_tol_list[posisi][1]
- 
+print(posisi_list)
+
 print(f"Anda sekarang telah sampai di kota {gerbang_tol_list[posisi][0]}. Terimakasih telah menggunakan tol Jasamarga. Saldo sebesar {tarif} telah dipotong dari kartu tol anda.")
