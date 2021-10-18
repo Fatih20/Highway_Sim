@@ -23,10 +23,8 @@ posisi_penghenti = [0, len(gerbang_tol_list)-1]
  
 if posisi == len(gerbang_tol_list)-1:
     go_left = True
-    # posisi_penghenti.remove(posisi_penghenti[1])
 elif posisi == 0:
     go_left = False
-    # posisi_penghenti.remove(posisi_penghenti[0])
 else :
     arah = input("Mau ke arah Timur atau Barat? ").lower()
     print("")
@@ -36,7 +34,6 @@ else :
         go_left = True
  
 tarif = 0
-# tarif += gerbang_tol_list[posisi][1]
  
 if go_left:
     pengubah_posisi = -1
@@ -50,7 +47,7 @@ while posisi not in posisi_penghenti:
     print(f"Anda sekarang berada di gerbang tol {gerbang_tol_list[posisi][0]}. Apakah anda akan melanjutkan perjalanan atau keluar di sini? keluar/lanjut")
     keputusan = input().lower()
     print("")
-    tarif += gerbang_tol_list[posisi][1]
+    tarif += gerbang_tol_list[posisi][1]*kendaraan_dan_tarif_list[kendaraan_pengguna][1]
     if keputusan == "keluar":
         ujung_tol = False
         break
