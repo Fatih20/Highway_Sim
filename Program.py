@@ -16,6 +16,7 @@ gerbang_tol_list = [
 
 #Tetapkan posisi mana saja yang mungkin dimiliki oleh pengguna
 posisi_yang_mungkin = [i for i in range(0, len(gerbang_tol_list))]
+posisi_penghenti = [0, len(gerbang_tol_list)-1]
 
 #Menanyakan apa kendaraan yang dikendarai pengguna
 print("Apa kendaraan yang anda kendarai?")
@@ -77,6 +78,6 @@ while posisi not in posisi_penghenti:
  
 if ujung_tol:
     tambahan_tarif = gerbang_tol_list[posisi][1]*kendaraan_dan_tarif_list[kendaraan_pengguna][1]
-    tarif += tambahan_tarif
+    tarif_total += tambahan_tarif
  
-print(f"Anda sekarang telah sampai di kota {gerbang_tol_list[posisi][0]}. Terimakasih telah menggunakan tol Jasamarga. Saldo sebesar {tarif} telah dipotong dari kartu tol anda.")
+print(f"Anda sekarang telah sampai di kota {gerbang_tol_list[posisi][0]}. Terimakasih telah menggunakan tol Jasamarga. Saldo sebesar {tarif_total} telah dipotong dari kartu tol anda.")
