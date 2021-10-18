@@ -16,7 +16,7 @@ gerbang_tol_list = [
 
 #Tetapkan posisi mana saja yang mungkin dimiliki oleh pengguna
 posisi_yang_mungkin = [i for i in range(0, len(gerbang_tol_list))]
-posisi_penghenti = [0, len(gerbang_tol_list)-1]
+posisi_ujung = [0, len(gerbang_tol_list)-1]
 
 #Menanyakan apa kendaraan yang dikendarai pengguna
 print("Apa kendaraan yang anda kendarai?")
@@ -36,7 +36,6 @@ for gerbang_tol in gerbang_tol_list:
     i+=1
 print("")
 posisi = int(input(""))-1
-print(f"Anda telah memasuki gerbang tol {gerbang_tol_list[posisi]}")
 print("")
 
 #Menetapkan apakah pengguna akan melakukan perjalanan ke barat atau timur
@@ -56,28 +55,32 @@ if go_left:
     pengubah_posisi = -1
 else :
     pengubah_posisi = 1
-
-#Pergerakan pertama pengguna di jalan tol sesuai dengan arah yang ditetapkan
-posisi += pengubah_posisi
  
 tarif_total = 0
-ujung_tol = True
+gerbang_yang_dilewati = 1
 
 #Perjalanan selanjutnya akan mengikuti input pengguna
-while posisi not in posisi_penghenti:
-    print(f"Anda sekarang berada di gerbang tol {gerbang_tol_list[posisi][0]}. Apakah anda akan melanjutkan perjalanan atau keluar di sini? keluar/lanjut")
-    keputusan = input().lower()
-    print("")
+while posisi in posisi_yang_mungkin:
+    pemberitahuan_posisi_gerbang_tol = f"Anda telah memasuki gerbang tol {gerbang_tol_list[posisi][0]}."
+    pertanyaan_pilihan_lanjut = "Apakah anda akan melanjutkan perjalanan atau keluar di sini? keluar/lanjut"
+    
+    if posisi in posisi_ujung:
+        print(f"{pemberitahuan_posisi_gerbang_tol}")
+        keputusan = "lanjut"
+        if gerbang_yang_dilewati != 1:
+            keputusan = "keluar"
+    else :
+        print(f"{pemberitahuan_posisi_gerbang_tol} {pertanyaan_pilihan_lanjut}")
+        keputusan = input().lower()
+        print("")
+
     tambahan_tarif = gerbang_tol_list[posisi][1]*kendaraan_dan_tarif_list[kendaraan_pengguna][1]
     tarif_total += tambahan_tarif
+
     if keputusan == "keluar":
-        ujung_tol = False
         break
     elif keputusan == "lanjut":
         posisi += pengubah_posisi
+    gerbang_yang_dilewati += 1
  
-if ujung_tol:
-    tambahan_tarif = gerbang_tol_list[posisi][1]*kendaraan_dan_tarif_list[kendaraan_pengguna][1]
-    tarif_total += tambahan_tarif
- 
-print(f"Anda sekarang telah sampai di kota {gerbang_tol_list[posisi][0]}. Terimakasih telah menggunakan tol Jasamarga. Saldo sebesar {tarif_total} telah dipotong dari kartu tol anda.")
+print(f"Anda telah keluar dari tol dan sekarang telah sampai di kota {gerbang_tol_list[posisi][0]}. Terimakasih telah menggunakan tol Jasamarga. Saldo sebesar {tarif_total} telah dipotong dari kartu tol anda.")
