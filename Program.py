@@ -1,9 +1,11 @@
+#Menginisialisasi jenis-jenis kendaraan yang ada dan berapa kali tarif normal yang harus mereka bayar
 kendaraan_dan_tarif_list = [
     ["Mobil", 1.0],
     ["Bis", 1.5],
     ["Truk", 2.0]
 ]
 
+#Menginisialisasi gerbang tol yang ada beserta tarifnya
 gerbang_tol_list = [
     ["Jakarta", 200],
     ["Tegal", 50],
@@ -12,6 +14,10 @@ gerbang_tol_list = [
     ["Surabaya", 200]
 ]
 
+#Tetapkan gerbang mana yang berada di ujung jalan tol sehingga perjalanan tidak bisa diteruskan lagi
+posisi_penghenti = [0, len(gerbang_tol_list)-1]
+
+#Menanyakan apa kendaraan yang dikendarai pengguna
 print("Apa kendaraan yang anda kendarai?")
 i = 0
 for kendaraan_dan_tarif in kendaraan_dan_tarif_list:
@@ -21,6 +27,7 @@ print("")
 kendaraan_pengguna = int(input(""))-1
 print("")
 
+#Menanyakan pengguna akan masuk tol dari gerbang yang ada di kota mana
 print("Anda memasuki tol dari gerbang mana?")
 i = 0
 for gerbang_tol in gerbang_tol_list:
@@ -29,9 +36,8 @@ for gerbang_tol in gerbang_tol_list:
 print("")
 posisi = int(input(""))-1
 print("")
- 
-posisi_penghenti = [0, len(gerbang_tol_list)-1]
- 
+
+#Menetapkan apakah pengguna akan melakukan perjalanan ke barat atau timur
 if posisi == len(gerbang_tol_list)-1:
     go_left = True
 elif posisi == 0:
@@ -43,17 +49,19 @@ else :
         go_left = False
     elif arah == "barat":
         go_left = True
- 
-tarif = 0
- 
+
 if go_left:
     pengubah_posisi = -1
 else :
     pengubah_posisi = 1
- 
+
+#Pergerakan pertama pengguna di jalan tol sesuai dengan arah yang ditetapkan
 posisi += pengubah_posisi
  
+tarif = 0
 ujung_tol = True
+
+#Perjalanan selanjutnya akan mengikuti input pengguna
 while posisi not in posisi_penghenti:
     print(f"Anda sekarang berada di gerbang tol {gerbang_tol_list[posisi][0]}. Apakah anda akan melanjutkan perjalanan atau keluar di sini? keluar/lanjut")
     keputusan = input().lower()
