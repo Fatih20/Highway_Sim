@@ -65,12 +65,12 @@ while posisi in posisi_yang_mungkin:
     pertanyaan_pilihan_lanjut = "Apakah anda akan melanjutkan perjalanan atau keluar di sini? keluar/lanjut"
     
     if posisi in posisi_ujung:
-        print(f"{pemberitahuan_posisi_gerbang_tol}")
+        print(f"{pemberitahuan_posisi_gerbang_tol}\n")
         keputusan = "lanjut"
         if gerbang_yang_dilewati != 1:
             keputusan = "keluar"
     else :
-        print(f"{pemberitahuan_posisi_gerbang_tol} {pertanyaan_pilihan_lanjut}")
+        print(f"{pemberitahuan_posisi_gerbang_tol} {pertanyaan_pilihan_lanjut}\n")
         keputusan = input().lower()
         print("")
 
