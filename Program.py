@@ -58,7 +58,7 @@ else :
 #Pergerakan pertama pengguna di jalan tol sesuai dengan arah yang ditetapkan
 posisi += pengubah_posisi
  
-tarif = 0
+tarif_total = 0
 ujung_tol = True
 
 #Perjalanan selanjutnya akan mengikuti input pengguna
@@ -66,7 +66,8 @@ while posisi not in posisi_penghenti:
     print(f"Anda sekarang berada di gerbang tol {gerbang_tol_list[posisi][0]}. Apakah anda akan melanjutkan perjalanan atau keluar di sini? keluar/lanjut")
     keputusan = input().lower()
     print("")
-    tarif += gerbang_tol_list[posisi][1]*kendaraan_dan_tarif_list[kendaraan_pengguna][1]
+    tambahan_tarif = gerbang_tol_list[posisi][1]*kendaraan_dan_tarif_list[kendaraan_pengguna][1]
+    tarif_total += tambahan_tarif
     if keputusan == "keluar":
         ujung_tol = False
         break
@@ -74,6 +75,7 @@ while posisi not in posisi_penghenti:
         posisi += pengubah_posisi
  
 if ujung_tol:
-    tarif += gerbang_tol_list[posisi][1]
+    tambahan_tarif = gerbang_tol_list[posisi][1]*kendaraan_dan_tarif_list[kendaraan_pengguna][1]
+    tarif += tambahan_tarif
  
 print(f"Anda sekarang telah sampai di kota {gerbang_tol_list[posisi][0]}. Terimakasih telah menggunakan tol Jasamarga. Saldo sebesar {tarif} telah dipotong dari kartu tol anda.")
