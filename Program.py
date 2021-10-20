@@ -85,7 +85,7 @@ while posisi in posisi_yang_mungkin:
     saldo -= tambahan_tarif
 
     if tambahan_tarif != 0:
-        print(f"Saldo sebesar {tambahan_tarif} telah dipotong dari kartu tol anda. Saldo anda sekarang adalah {saldo}.\n")
+        print(f"Saldo sebesar {tambahan_tarif*1000} telah dipotong dari kartu tol anda. Saldo anda sekarang adalah {saldo*1000}.\n")
 
     if keputusan == "keluar":
         break
