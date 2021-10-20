@@ -14,9 +14,12 @@ gerbang_tol_list = [
     ["Surabaya", 200]
 ]
 
-#Tetapkan posisi mana saja yang mungkin dimiliki oleh pengguna
+#Tetapkan posisi mana saja yang mungkin dimiliki oleh pengguna serta posisi yang merupakan ujung tol
 posisi_yang_mungkin = [i for i in range(0, len(gerbang_tol_list))]
 posisi_ujung = [0, len(gerbang_tol_list)-1]
+
+#Menetapkan saldo kartu tol yang dimiliki pengguna
+saldo = 1000
 
 #Menanyakan apa kendaraan yang dikendarai pengguna
 print("Apa kendaraan yang anda kendarai?")
@@ -55,7 +58,7 @@ if go_left:
     pengubah_posisi = -1
 else :
     pengubah_posisi = 1
- 
+
 tarif_total = 0
 gerbang_yang_dilewati = 1
 
@@ -64,7 +67,7 @@ while posisi in posisi_yang_mungkin:
     pemberitahuan_posisi_gerbang_tol = f"Anda telah memasuki gerbang tol {gerbang_tol_list[posisi][0]}."
     pertanyaan_pilihan_lanjut = "Apakah anda akan melanjutkan perjalanan atau keluar di sini? keluar/lanjut"
     
-    if posisi in posisi_ujung:
+    if posisi in posisi_ujung or gerbang_yang_dilewati == 1:
         print(f"{pemberitahuan_posisi_gerbang_tol}\n")
         keputusan = "lanjut"
         if gerbang_yang_dilewati != 1:
@@ -79,13 +82,15 @@ while posisi in posisi_yang_mungkin:
     else : 
         tambahan_tarif = 0
     tarif_total += tambahan_tarif
+    saldo -= tambahan_tarif
+
+    if tambahan_tarif != 0:
+        print(f"Saldo sebesar {tambahan_tarif} telah dipotong dari kartu tol anda. Saldo anda sekarang adalah {saldo}.\n")
 
     if keputusan == "keluar":
         break
     elif keputusan == "lanjut":
-        if tambahan_tarif != 0:
-            print(f"Saldo sebesar {tambahan_tarif} telah dipotong dari kartu tol anda.")
         posisi += pengubah_posisi
     gerbang_yang_dilewati += 1
  
-print(f"Anda telah keluar dari tol dan sekarang telah sampai di kota {gerbang_tol_list[posisi][0]}. Terimakasih telah menggunakan tol Jasamarga. Anda telah menghabiskan total saldo sebesar {tarif_total}.")
+print(f"Anda telah keluar dari tol dan sekarang telah sampai di kota {gerbang_tol_list[posisi][0]}. Terimakasih telah menggunakan tol Jasamarga.")
