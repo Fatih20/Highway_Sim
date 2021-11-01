@@ -1,3 +1,16 @@
+#Program Simulasi Jalan Tol
+#Menyimulasikan cara kerja jalan tol
+
+#KAMUS
+# kendaraan_dan_tarif_list, gerbang_tol_list : array of array
+# posisi_yang_mungkin, posisi_ujung : array of integer
+# saldo : float
+# i, kendaraan_pengguna, posisi, pengubah_posisi, tambahan_tarif, tarif_total, gerbang_yang_dilewati : integer
+# go_left, go_right : bool
+# pemberitahuan_posisi_gerbang_tol, pertanyaan_pilihan_lanjut, keputusan : string
+
+
+#Algoritma
 #Menginisialisasi jenis-jenis kendaraan yang ada dan berapa kali tarif normal yang harus mereka bayar
 kendaraan_dan_tarif_list = [
     ["Mobil", 1.0],
