@@ -27,45 +27,42 @@ gerbang_tol_list = [
     ["Surabaya", 200]
 ]
 
+pilihan_gerbang_tol_list = [
+    ["Jakarta - Surabaya", 0, False],
+    ["Tegal - Jakarta", 1, True],
+    ["Tegal - Surabaya", 1, False],
+    ["Semarang - Jakarta", 2, True],
+    ["Semarang - Surabaya", 2, False],
+    ["Jogjakarta - Jakarta", 3, True],
+    ["Jogjakarta - Surabaya", 3, False],
+    ["Surabaya - Jakarta", 4, True],
+]
+
 #Tetapkan posisi mana saja yang mungkin dimiliki oleh pengguna serta posisi yang merupakan ujung tol
 posisi_yang_mungkin = [i for i in range(0, len(gerbang_tol_list))]
 posisi_ujung = [0, len(gerbang_tol_list)-1]
 
 #Menetapkan saldo kartu tol yang dimiliki pengguna
-saldo = 1000
+saldo = 1000.0
 
 #Menanyakan apa kendaraan yang dikendarai pengguna
 print("Apa kendaraan yang anda kendarai?")
-i = 0
-for kendaraan_dan_tarif in kendaraan_dan_tarif_list:
-    print(f"{i+1} {kendaraan_dan_tarif[0]}")
-    i+=1
+for i in range(len(kendaraan_dan_tarif_list)):
+    print(f"{i+1} {kendaraan_dan_tarif_list[i][0]}")
 print("")
 kendaraan_pengguna = int(input(""))-1
 print("")
 
 #Menanyakan pengguna akan masuk tol dari gerbang yang ada di kota mana
 print("Anda memasuki tol dari gerbang mana?")
-i = 0
-for gerbang_tol in gerbang_tol_list:
-    print(f"{i+1} {gerbang_tol[0]}")
-    i+=1
+for i in range(len(pilihan_gerbang_tol_list)):
+    print(f"{i+1} {pilihan_gerbang_tol_list[i][0]}")
 print("")
-posisi = int(input(""))-1
+gerbang_tol_yang_dipilih = pilihan_gerbang_tol_list[int(input(""))-1]
 print("")
 
-#Menetapkan apakah pengguna akan melakukan perjalanan ke barat atau timur
-if posisi == len(gerbang_tol_list)-1:
-    go_left = True
-elif posisi == 0:
-    go_left = False
-else :
-    arah = input("Mau ke arah Timur atau Barat? ").lower()
-    print("")
-    if arah == "timur":
-        go_left = False
-    elif arah == "barat":
-        go_left = True
+posisi = gerbang_tol_yang_dipilih[1]
+go_left = gerbang_tol_yang_dipilih[2]
 
 if go_left:
     pengubah_posisi = -1
